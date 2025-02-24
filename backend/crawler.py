@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 
 def fetch_article_summary(article_url):
-    print(f"Fetching article content: {article_url}")
+    #print(f"Fetching article content: {article_url}")
     try:
         response = requests.get(article_url, headers={"User-Agent": "Mozilla/5.0"})
         if response.status_code != 200:
@@ -44,7 +44,7 @@ def fetch_bbc_articles():
         if not link.startswith("http"):
             link = "https://www.bbc.com" + link
 
-        print(f"Extracted Title: {title}, Link: {link}")  # Debugging to ensure title extraction works
+        #print(f"Extracted Title: {title}, Link: {link}")  # Debugging to ensure title extraction works
 
         summary = fetch_article_summary(link)  # Fetch article summary
         articles.append({"title": title, "link": link, "summary": summary})

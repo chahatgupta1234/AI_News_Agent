@@ -66,7 +66,7 @@ def summarize_with_gemini(text):
     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
     headers = {"Content-Type": "application/json"}
     payload = {
-        "contents": [{"parts": [{"text": f"Summarize this news article briefly so that easily understand by humans what is this news: {text}"}]}]
+        "contents": [{"parts": [{"text": f"Summarize this news article briefly so that easily understand by humans what is this news. and if summary not available then create one news summary: {text}"}]}]
     }
 
     try:
@@ -76,7 +76,7 @@ def summarize_with_gemini(text):
         if 'candidates' in response_data and len(response_data['candidates']) > 0:
             return response_data['candidates'][0]['content']['parts'][0]['text']
         else:
-            return "Summary not available."
+            return text
     except Exception as e:
         print(f"Error summarizing with Gemini: {e}")
         return "Summary not available."
